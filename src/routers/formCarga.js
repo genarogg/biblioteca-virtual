@@ -1,9 +1,12 @@
 import express from "express";
+import upload from "../config/multer.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("formCarga/formCarga", {});
-});
+import { formCargaGet, formCargaPost } from "../controllers/formCarga.js";
+
+router.get("/", formCargaGet);
+
+router.post("/", upload.single("archivo"), formCargaPost);
 
 export default router;
