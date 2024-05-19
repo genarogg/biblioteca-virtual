@@ -48,6 +48,7 @@
       required
     />
   </div>
+
   <div class="mb-3">
     <label for="descripcion" class="form-label">Descripción:</label>
     <textarea
@@ -73,3 +74,46 @@
     <input type="submit" value="Enviar" class="btn btn-primary" />
   </div>
 </form>
+
+<script>
+  document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    // Obtén el archivo del formulario
+    const file = formData.get("archivo");
+
+    // Crea un nuevo objeto File con el nombre de archivo formateado
+    const normalizeFilename = (filename) => {
+      const ext = filename.slice(filename.lastIndexOf("."));
+      const name = filename.slice(0, filename.lastIndexOf("."));
+
+      return (
+        name
+          .toLowerCase() // Convertir a minúsculas
+          .normalize("NFD") // Descomponer los caracteres acentuados en su forma básica y diacríticos
+          .replace(/[\u0300-\u036f]/g, "") // Eliminar los diacríticos
+          .replace(/\s+/g, "-") // Reemplazar los espacios con guiones
+          .replace(/[^a-z0-9-]/gi, "") + ext // Eliminar todos los caracteres no alfanuméricos y no guiones
+      ); // Agregar la extensión al final
+    };
+
+    const formattedFile = new File([file], normalizeFilename(file.name), {
+      type: file.type,
+    });
+
+    console.log(formattedFile);
+
+    // Reemplaza el archivo en el formulario con el archivo formateado
+    formData.set("archivo", formattedFile);
+
+    fetch("/cargar-trabajo", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  });
+</script>

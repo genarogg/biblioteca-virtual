@@ -43,6 +43,11 @@ const Trabajo = sequelize.define(
       allowNull: false,
       defaultValue: 1,
     },
+
+    userAgent: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     // Opciones del modelo
