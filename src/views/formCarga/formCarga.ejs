@@ -1,0 +1,75 @@
+<%- include("../global/head.ejs") %>
+
+<form
+  action="/cargar-trabajo"
+  method="post"
+  enctype="multipart/form-data"
+  class="p-3"
+>
+  <!--  -->
+  <%- include("./categorias.ejs") %>
+  <div class="mb-3">
+    <label for="nombreAutor" class="form-label">Nombre del autor:</label>
+    <input
+      type="text"
+      id="nombreAutor"
+      name="nombreAutor"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="apellidoAutor" class="form-label">Apellido del autor:</label>
+    <input
+      type="text"
+      id="apellidoAutor"
+      name="apellidoAutor"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="cedulaAutor" class="form-label">Cédula del autor:</label>
+    <input
+      type="text"
+      id="cedulaAutor"
+      name="cedulaAutor"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="titulo" class="form-label">Título:</label>
+    <input
+      type="text"
+      id="titulo"
+      name="titulo"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción:</label>
+    <textarea
+      id="descripcion"
+      name="descripcion"
+      rows="4"
+      class="form-control"
+      required
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="archivo" class="form-label">Cargar PDF:</label>
+    <input
+      type="file"
+      id="archivo"
+      name="archivo"
+      class="form-control"
+      accept=".pdf"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+  </div>
+</form>
