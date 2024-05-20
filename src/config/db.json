@@ -1,5 +1,18 @@
 {
-  "trabajoGradoPregrado": [],
+  "trabajoGradoPregrado": [
+    {
+      "id": "e8db",
+      "categoria": "trabajoGradoPregrado",
+      "titulo": "afsd",
+      "descripcion": "fsdaf"
+    },
+    {
+      "id": "2230",
+      "categoria": "trabajoGradoPregrado",
+      "titulo": "afsd",
+      "descripcion": "fsdaf"
+    }
+  ],
   "produccionesIntelectualesDiep": [
     {
       "id": "1c58",

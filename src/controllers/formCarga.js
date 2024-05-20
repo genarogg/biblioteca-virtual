@@ -16,6 +16,7 @@ const formCargaPost = async (req, res) => {
   } = req.body;
   const { filename } = req.file;
   const userAgent = req.headers["user-agent"];
+console.log(req.body)
 
   if (
     !categoria ||

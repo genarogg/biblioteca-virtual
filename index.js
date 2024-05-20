@@ -28,6 +28,8 @@ import { homeRouter, formCargaRouter } from "./src/routers/router.js";
 app.use("/", homeRouter);
 app.use("/cargar-trabajo", formCargaRouter);
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
