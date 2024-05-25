@@ -15,7 +15,15 @@ const getEstadisticaGet = async (req, res) => {
       }
     }
 
-    res.status(200).json(porcentajes);
+    porcentajes["total"] = total; // Añadir el total a 'porcentajes'
+
+    const data = {
+      porcentajes,
+      categoria,
+    };
+    console.log(data);
+
+    res.status(200).json(data);
   } catch (error) {
     console.log(error);
     res
