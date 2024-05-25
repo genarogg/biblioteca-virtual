@@ -6,6 +6,7 @@ const formCargaGet = (req, res) => {
 };
 
 const formCargaPost = async (req, res) => {
+  console.log(req.body);
   const {
     categoria,
     titulo,
@@ -16,7 +17,6 @@ const formCargaPost = async (req, res) => {
   } = req.body;
   const { filename } = req.file;
   const userAgent = req.headers["user-agent"];
-console.log(req.body)
 
   if (
     !categoria ||
@@ -53,6 +53,7 @@ console.log(req.body)
     // Crear un objeto con la categoría a incrementar
     let incrementObject = {};
     incrementObject[categoria] = 1;
+    incrementObject["total"] = 1; // Incrementar el campo 'total'
 
     // Asegurarse de que exista al menos un registro en la tabla 'categorias'
     const categoriaExistente = await Categoria.findOne();
@@ -63,16 +64,6 @@ console.log(req.body)
       // Crear un nuevo registro en la tabla 'categorias' si no existe ninguno
       await Categoria.create(incrementObject);
     }
-
-    // Guardar la categoría en el servidor JSON
-    axios
-      .post(`http://localhost:8001/${categoria}`, {
-        categoria,
-        titulo,
-        descripcion,
-      })
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
 
     res.status(200).json({ message: "Trabajo cargado exitosamente" });
   } catch (error) {

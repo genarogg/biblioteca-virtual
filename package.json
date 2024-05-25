@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "json-db": "json-server --watch src/config/db.json -p 8001",
-    "dev": "concurrently \"nodemon index.js\" \"npm run json-db\"",
+    "dev": "concurrently \"nodemon index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "axios": "^1.7.0",
     "bcrypt": "^5.1.1",
     "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",

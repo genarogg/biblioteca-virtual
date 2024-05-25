@@ -103,17 +103,53 @@
       type: file.type,
     });
 
-    console.log(formattedFile);
-
     // Reemplaza el archivo en el formulario con el archivo formateado
     formData.set("archivo", formattedFile);
 
-    fetch("/cargar-trabajo", {
+   /*  fetch("/cargar-trabajo", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error)); */
   });
+
+  /* data fake */
+
+  const categorias = [
+    "trabajoGradoPregrado",
+    "produccionesIntelectualesDiep",
+    "publicaciones",
+    "diplomadosPregrado",
+    "diplomadosPostgrado",
+    "diplomadosUnidadesAnexas",
+  ];
+
+  for (let i = 0; i < 100; i++) {
+    let formDataFake = new FormData();
+    let formattedFile = new File(["content"], `file${i}.txt`, {
+      type: "text/plain",
+    });
+
+    // Selecciona una categoría aleatoria del arreglo
+    let categoriaAleatoria =
+      categorias[Math.floor(Math.random() * categorias.length)];
+
+    formDataFake.set("archivo", formattedFile);
+    formDataFake.set("categoria", categoriaAleatoria);
+    formDataFake.set("titulo", `titulo${i}`);
+    formDataFake.set("descripcion", `descripcion${i}`);
+    formDataFake.set("nombreAutor", `nombreAutor${i}`);
+    formDataFake.set("apellidoAutor", `apellidoAutor${i}`);
+    formDataFake.set("cedulaAutor", `cedulaAutor${i}`);
+
+    fetch("/cargar-trabajo", {
+      method: "POST",
+      body: formDataFake,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
 </script>
