@@ -1,24 +1,21 @@
 import { Trabajo, Categoria } from "../models/index.js";
 
-const getDataGet = async (req, res) => {
+const getEstadisticaGet = async (req, res) => {
   try {
-    const trabajos = await Trabajo.findAll();
     const categorias = await Categoria.findAll();
 
     const categoria = categorias[0].dataValues;
     const total = categoria.total;
 
     const porcentajes = {};
-    
+
     for (let key in categoria) {
       if (typeof categoria[key] === "number" && key !== "total") {
         porcentajes[key] = Math.round((categoria[key] / total) * 100);
       }
     }
 
-    console.log(porcentajes);
-
-    res.status(200).json(trabajos);
+    res.status(200).json(porcentajes);
   } catch (error) {
     console.log(error);
     res
@@ -27,6 +24,6 @@ const getDataGet = async (req, res) => {
   }
 };
 
-const getDataPost = async (req, res) => {};
+const getEstadisticaPost = async (req, res) => {};
 
-export { getDataGet, getDataPost };
+export { getEstadisticaGet, getEstadisticaPost };

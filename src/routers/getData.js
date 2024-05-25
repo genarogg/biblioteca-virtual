@@ -2,10 +2,10 @@ import express from "express";
 
 const router = express.Router();
 
-import { getDataGet, getDataPost } from "../controllers/getData.js";
+import { getEstadisticaGet, getEstadisticaPost } from "../controllers/getEstadistica.js";
 
-router.get("/", getDataGet);
+router.get("/estadistica", getEstadisticaGet);
 
-router.post("/", getDataPost);
+router.post("/estadistica", getEstadisticaPost);
 
 export default router;
