@@ -14,6 +14,7 @@ const formCargaPost = async (req, res) => {
     nombreAutor,
     apellidoAutor,
     cedulaAutor,
+    emailAutor,
   } = req.body;
   const { filename } = req.file;
   const userAgent = req.headers["user-agent"];
@@ -25,7 +26,8 @@ const formCargaPost = async (req, res) => {
     !nombreAutor ||
     !apellidoAutor ||
     !cedulaAutor ||
-    !filename
+    !filename ||
+    !emailAutor
   ) {
     return res.status(400).json({ error: "Todos los campos son necesarios" });
   }
@@ -46,7 +48,8 @@ const formCargaPost = async (req, res) => {
       nombreAutor,
       apellidoAutor,
       cedulaAutor,
-      rutaPDF: "/uploads/" + filename,
+      emailAutor,
+      rutaPDF: filename,
       userAgent,
     });
 

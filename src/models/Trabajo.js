@@ -29,6 +29,14 @@ const Trabajo = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    emailAutor: {
+      type: DataTypes.STRING,
+      allowNull: false,
+
+      validate: {
+        isEmail: true,
+      },
+    },
     cedulaAutor: {
       type: DataTypes.STRING,
       allowNull: false,

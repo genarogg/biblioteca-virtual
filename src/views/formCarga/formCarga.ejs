@@ -28,6 +28,12 @@
       required
     />
   </div>
+
+  <div class="mb-3">
+    <label for="emailAutor" class="form-label">email del autor:</label>
+    <input type="text" id="emailAutor" name="emailAutor"" class="form-control"
+    required />
+  </div>
   <div class="mb-3">
     <label for="cedulaAutor" class="form-label">Cédula del autor:</label>
     <input
@@ -106,18 +112,18 @@
     // Reemplaza el archivo en el formulario con el archivo formateado
     formData.set("archivo", formattedFile);
 
-   /*  fetch("/cargar-trabajo", {
+    fetch("/cargar-trabajo", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
-      .catch((error) => console.error(error)); */
+      .catch((error) => console.error(error));
   });
 
   /* data fake */
 
-  const categorias = [
+  /* const categorias = [
     "trabajoGradoPregrado",
     "produccionesIntelectualesDiep",
     "publicaciones",
@@ -151,5 +157,5 @@
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
-  }
+  } */
 </script>
