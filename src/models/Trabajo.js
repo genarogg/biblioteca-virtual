@@ -46,10 +46,21 @@ const Trabajo = sequelize.define(
       allowNull: false,
     },
 
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     downloader: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1,
+    },
+
+    aprobado: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
 
     userAgent: {

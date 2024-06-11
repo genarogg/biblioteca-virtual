@@ -20,14 +20,16 @@ const $quitarAcentos = (cadena) => {
 
 const $createFriendlyUrl = (title) => {
   return title
+    .toLowerCase()
     .normalize("NFD") // Reemplaza acentos con su carácter homólogo en inglés
     .replace(/[\u0300-\u036f]/g, "") // Elimina los acentos
-    .replace(/\s+/g, "-") // Reemplaza los espacios por guiones
-    .toLowerCase(); // Convierte a minúsculas
+    .replace(/\s+/g, "-"); // Reemplaza los espacios por guiones // Convierte a minúsculas
 };
 
+export { $createFriendlyUrl };
+
 const normalizeFilename = (filename) => {
-    console.log("filename", filename)
+  console.log("filename", filename);
   return filename;
 };
 

@@ -1,5 +1,5 @@
-import axios from "axios";
 import { Trabajo, Categoria } from "../models/index.js";
+import { $createFriendlyUrl } from "../functions/index.js";
 
 const formCargaGet = (req, res) => {
   res.render("formCarga/formCarga", {});
@@ -16,6 +16,7 @@ const formCargaPost = async (req, res) => {
     cedulaAutor,
     emailAutor,
   } = req.body;
+
   const { filename } = req.file;
   const userAgent = req.headers["user-agent"];
 
@@ -34,16 +35,19 @@ const formCargaPost = async (req, res) => {
 
   try {
     const trabajoExistente = await Trabajo.findOne({
-      where: { rutaPDF: "/uploads/" + filename, cedulaAutor },
+      where: { titulo, cedulaAutor },
     });
 
     if (trabajoExistente) {
       return res.status(400).json({ error: "Trabajo duplicado" });
     }
 
+    const url = $createFriendlyUrl(titulo);
+
     await Trabajo.create({
       categoria,
       titulo,
+      url,
       descripcion,
       nombreAutor,
       apellidoAutor,

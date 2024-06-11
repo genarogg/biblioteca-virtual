@@ -1,4 +1,4 @@
-import { Trabajo, Categoria } from "../models/index.js";
+import { Trabajo } from "../models/index.js";
 
 const getElementGet = async (req, res) => {
   const { titulo } = req.params;

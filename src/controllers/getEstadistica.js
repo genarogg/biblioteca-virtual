@@ -1,4 +1,4 @@
-import { Trabajo, Categoria } from "../models/index.js";
+import { Categoria } from "../models/index.js";
 
 const getEstadisticaGet = async (req, res) => {
   try {

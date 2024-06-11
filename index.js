@@ -27,13 +27,23 @@ sequelize.sync({ logging: false }).then(() => {
   console.log("DB conectada!");
 });
 
-import { homeRouter, formCargaRouter, getData } from "./src/routers/router.js";
+import {
+  homeRouter,
+  formCargaRouter,
+  getData,
+  searchEngine,
+} from "./src/routers/router.js";
+
 app.use("/", homeRouter);
 app.use("/cargar-trabajo", formCargaRouter);
 app.use("/get-data", getData);
+app.use("/search", searchEngine);
 
 const PORT = process.env.PORT || 8000;
 
+import createTrabajos from "./src/config/fakedata/createTrabajos.js";
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  createTrabajos();
 });

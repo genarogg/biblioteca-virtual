@@ -1,4 +1,4 @@
 import upload from "./multer.js";
-import normalizeFilename from "./normalizeFilename.js";
+import normalizeFilename, { $createFriendlyUrl } from "./normalizeFilename.js";
 
-export { upload, normalizeFilename };
+export { upload, normalizeFilename, $createFriendlyUrl };
