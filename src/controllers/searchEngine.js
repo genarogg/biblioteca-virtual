@@ -13,6 +13,7 @@ const searchEngineGet = (req, res) => {
           { categoria: { [Op.like]: "%" + search + "%" } },
         ],
       },
+      attributes: ["titulo", "url"], // Solo selecciona los campos 'titulo' y 'url'
     })
       .then((trabajos) => {
         if (trabajos.length > 0) {
